@@ -19,10 +19,6 @@ public static class GameEvents
 
 	// EVENT TYPE & DETAILS
 
-	public class GameEvent {
-		public GameEventType type;
-	}
-
 	public class GameEventDetails {
 		public GameEventAction action;
 		public int playerCount;
@@ -30,7 +26,7 @@ public static class GameEvents
 
 	// EVENT
 
-	public static Signal<GameEvent, GameEventDetails> Instruction = new Signal<GameEvent, GameEventDetails> ();
+	public static Signal<GameEventType, GameEventDetails> Instruction = new Signal<GameEventType, GameEventDetails> ();
 }
 
 public static class InputEvents
