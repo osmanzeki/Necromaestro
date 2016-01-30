@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -34,14 +35,13 @@ public class Server : MonoBehaviour {
         ThreadStart ts = new ThreadStart(Listen);
         mThread = new Thread(ts);
         mThread.Start();
-        print("Thread done...");
 
     }
 
+
     void Listen() { 
+
         // Establish the local endpoint for the socket.
-        // The DNS name of the computer
-        // running the listener is "host.contoso.com".
         IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
         IPAddress ipAddress = ipHostInfo.AddressList[0];
         IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
@@ -51,13 +51,13 @@ public class Server : MonoBehaviour {
         Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         // Bind the socket to the local endpoint and listen for incoming connections.
-        try
-        {
+        try {
+
             listener.Bind(localEndPoint);
             listener.Listen(100);
 
-            while (true)
-            {
+            while (true) {
+
                 // Set the event to nonsignaled state.
                 allDone.Reset();
 
@@ -67,22 +67,20 @@ public class Server : MonoBehaviour {
 
                 // Wait until a connection is made before continuing.
                 allDone.WaitOne();
+
             }
 
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
+
             Console.WriteLine(e.ToString());
+
         }
 
-        Console.WriteLine("\nPress ENTER to continue...");
-        Console.Read();
     }
 
 
-    public static void AcceptCallback(IAsyncResult ar)
-    {
-        Debug.Log("Incoming connection...");
+    public static void AcceptCallback(IAsyncResult ar) {
 
         // Signal the main thread to continue.
         allDone.Set();
@@ -91,15 +89,19 @@ public class Server : MonoBehaviour {
         Socket listener = (Socket)ar.AsyncState;
         Socket handler = listener.EndAccept(ar);
 
+        string RemoteIp = ((IPEndPoint)handler.RemoteEndPoint).Address.ToString();
+        Debug.Log("Incoming connection from " + RemoteIp);
+
         // Create the state object.
         StateObject state = new StateObject();
         state.workSocket = handler;
         handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
+
     }
 
 
-    public static void ReadCallback(IAsyncResult ar)
-    {
+    public static void ReadCallback(IAsyncResult ar) {
+
         String content = String.Empty;
 
         // Retrieve the state object and the handler socket
@@ -110,49 +112,60 @@ public class Server : MonoBehaviour {
         // Read data from the client socket. 
         int bytesRead = handler.EndReceive(ar);
 
-        if (bytesRead > 0)
-        {
+        if (bytesRead > 0) {
+
             // There  might be more data, so store the data received so far.
             string str = Encoding.ASCII.GetString(state.buffer, 0, bytesRead);
             state.sb.Append(str);
-            Debug.Log(str);
 
             // Check for end-of-file tag. If it is not there, read 
             // more data.
             content = state.sb.ToString();
-            if (content.IndexOf("<EOF>") > -1)
-            {
-                // All the data has been read from the 
-                // client. Display it on the console.
-                Console.WriteLine("Read {0} bytes from socket. \n Data : {1}",
-                    content.Length, content);
+            int eom = content.IndexOf("\n");
+            if (eom > -1) {
+
+                string MessageStr = content.Substring(0, eom - 1);
+                state.sb.Remove(0, eom + 1);
+                Debug.Log("Message received : " + MessageStr);
+
+                try {
+                    GameMessage Msg = GameMessage.CreateFromJSON(MessageStr);
+                    if (Msg != null)
+                        Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+
+                }
+
                 // Echo the data back to the client.
-                Send(handler, content);
+                //Send(handler, content);
+
             }
-            else
-            {
-                // Not all data received. Get more.
-                handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-                new AsyncCallback(ReadCallback), state);
-            }
+
+            handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReadCallback), state);
+
         }
+
     }
 
 
-    private static void Send(Socket handler, String data)
-    {
+    private static void Send(Socket handler, String data) {
+
         // Convert the string data to byte data using ASCII encoding.
         byte[] byteData = Encoding.ASCII.GetBytes(data);
 
         // Begin sending the data to the remote device.
         handler.BeginSend(byteData, 0, byteData.Length, 0, new AsyncCallback(SendCallback), handler);
+
     }
 
 
-    private static void SendCallback(IAsyncResult ar)
-    {
-        try
-        {
+    private static void SendCallback(IAsyncResult ar) {
+
+        try {
+
             // Retrieve the socket from the state object.
             Socket handler = (Socket)ar.AsyncState;
 
@@ -164,10 +177,13 @@ public class Server : MonoBehaviour {
             handler.Close();
 
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
+
             Console.WriteLine(e.ToString());
+
         }
+
     }
 
 }
+
