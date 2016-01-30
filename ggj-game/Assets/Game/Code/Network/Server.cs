@@ -71,7 +71,7 @@ public class Server : MonoBehaviour {
 					Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
 
 					// Input events
-					InputEvents.Signals[(int)InputEvents.Events.SWIPE_LEFT].Dispatch();
+					GameController.MessageReceivedSignal.Dispatch(Msg);
 				}
 
             }

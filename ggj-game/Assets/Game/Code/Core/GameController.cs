@@ -8,12 +8,17 @@ public class GameController : MonoBehaviour
 {
 	private static GameController gameController;
 
+	public static Signal<GameMessage> MessageReceivedSignal = new Signal<GameMessage>();
+
+	// Players
+	public GameObject[] players;
+
 	protected void Awake ()
 	{
 		gameController = this;
 
 		// Bind events
-		InputEvents.Signals[(int)InputEvents.Events.SWIPE_LEFT].AddListener(OnSwipeLeft);
+		MessageReceivedSignal.AddListener(OnServerMessage);
 	}
 
 	protected void OnDestroy ()
@@ -23,7 +28,7 @@ public class GameController : MonoBehaviour
 		}
 
 		// Unbind events
-		InputEvents.Signals[(int)InputEvents.Events.SWIPE_LEFT].RemoveListener(OnSwipeLeft);
+		MessageReceivedSignal.RemoveListener(OnServerMessage);
 	}
 
 	protected void OnDisable ()
@@ -46,7 +51,8 @@ public class GameController : MonoBehaviour
 		
 	}
 
-	private void OnSwipeLeft () {
-		Debug.Log ("GAME IS NOW SWIPING LEFT!!!");
+	private void OnServerMessage (GameMessage msg)
+	{
+		Debug.Log(msg.e);
 	}
 }
