@@ -15,15 +15,25 @@ public class Server : MonoBehaviour {
     private Thread Thread;
 
 
-    // Use this for initialization
+	void Awake () {
+		GameEvents.GameConnectedSignal.AddListener(StartGame);
+	}
+
     void Start() {
+		UnityEngine.Object.DontDestroyOnLoad(gameObject);
 
         ThreadStart ts = new ThreadStart(Listen);
         Thread = new Thread(ts);
         Thread.Start();
-
     }
 
+	void OnDestroy () {
+		GameEvents.GameConnectedSignal.RemoveListener(StartGame);
+	}
+
+	void StartGame () {
+		Debug.Log("Game BEGINS");
+	}
 
     void Listen() {
 
@@ -36,6 +46,7 @@ public class Server : MonoBehaviour {
             sw = new StreamWriter(s);
             sw.AutoFlush = true;
 
+			GameEvents.GameConnectedSignal.Dispatch();
         }
         catch (Exception e) {
 
@@ -56,8 +67,12 @@ public class Server : MonoBehaviour {
             try {
 
                 GameMessage Msg = GameMessage.CreateFromJSON(Data);
-                if (Msg != null)
-                    Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
+				if (Msg != null) {
+					Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
+
+					// Input events
+					InputEvents.Signals[(int)InputEvents.Events.SWIPE_LEFT].Dispatch();
+				}
 
             }
             catch (Exception e) {

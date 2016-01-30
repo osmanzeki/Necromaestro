@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour
 	protected void Awake ()
 	{
 		gameController = this;
+
+		// Bind events
+		InputEvents.Signals[(int)InputEvents.Events.SWIPE_LEFT].AddListener(OnSwipeLeft);
 	}
 
 	protected void OnDestroy ()
@@ -18,6 +21,9 @@ public class GameController : MonoBehaviour
 		if (gameController != null) {
 			gameController = null;
 		}
+
+		// Unbind events
+		InputEvents.Signals[(int)InputEvents.Events.SWIPE_LEFT].RemoveListener(OnSwipeLeft);
 	}
 
 	protected void OnDisable ()
@@ -38,5 +44,9 @@ public class GameController : MonoBehaviour
 	protected void Update ()
 	{
 		
+	}
+
+	private void OnSwipeLeft () {
+		Debug.Log ("GAME IS NOW SWIPING LEFT!!!");
 	}
 }

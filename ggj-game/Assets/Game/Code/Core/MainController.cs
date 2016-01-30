@@ -59,7 +59,7 @@ public class MainController : MonoBehaviour
 		updateDelegates [(int)SceneState.Ready] = UpdateSceneReady;
 		updateDelegates [(int)SceneState.Run] = UpdateSceneRun;
 
-		nextSceneName = GameConstants.MENU_SCENE;
+		nextSceneName = GameConstants.SERVER_SCENE;
 		sceneState = SceneState.Reset;
 		GetComponent<Camera> ().orthographicSize = Screen.height / 2;
 	}

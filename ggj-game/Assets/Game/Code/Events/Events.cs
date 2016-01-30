@@ -1,42 +1,27 @@
 using UnityEngine;
 using System.Collections;
 
-public static class GameEvents
-{
-	// ENUMS
-	
-	public enum GameEventType {
-		INSTRUCTION
-	}
+public static class GameEvents {
 
-	public enum GameEventAction {
-		SWIPE_LEFT,
-		SWIPE_RIGHT,
-		TILT,
-		HOLD,
-		TAP
-	}
-
-	// EVENT TYPE & DETAILS
-
-	public class GameEventDetails {
-		public GameEventAction action;
-		public int playerCount;
-	}
-
-	// EVENT
-
-	public static Signal<GameEventType, GameEventDetails> Instruction = new Signal<GameEventType, GameEventDetails> ();
+	public static Signal GameConnectedSignal = new Signal();
 }
 
 public static class InputEvents
 {
-	public class InputEventDetails {}
+	public enum Events {
+		SWIPE_LEFT,
+		SWIPE_RIGHT,
+		TILT,
+		HOLD,
+		TAP,
+		COUNT
+	}
 
-	public static Signal<InputEventDetails> SwipeLeftSignal = new Signal<InputEventDetails> ();
-	public static Signal<InputEventDetails> SwipeRightSignal = new Signal<InputEventDetails> ();
-	public static Signal<InputEventDetails> TiltSignal = new Signal<InputEventDetails> ();
-	public static Signal<InputEventDetails> HoldStartSignal = new Signal<InputEventDetails> ();
-	public static Signal<InputEventDetails> HoldEndSignal = new Signal<InputEventDetails> ();
-	public static Signal<InputEventDetails> TapSignal = new Signal<InputEventDetails> ();
+	public static Signal[] Signals = new Signal[(int)Events.COUNT] {
+		new Signal(),
+		new Signal(),
+		new Signal(),
+		new Signal(),
+		new Signal()
+	};
 }
