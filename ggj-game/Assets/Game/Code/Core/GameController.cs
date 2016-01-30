@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
 	protected void Update ()
 	{
 		if (Input.GetMouseButtonDown (0) == true) {
-			MainController.SwitchScene ("Menu Scene");
+			MainController.SwitchScene (GameConstants.MENU_SCENE);
 		}
 	}
 }

@@ -4,5 +4,8 @@ using System.Collections.Generic;
 
 public static class GameConstants
 {
-	public static int CURRENT_SCENE_ID = 0;
+	public const string MAIN_SCENE = "Main";
+	public const string MENU_SCENE = "MainMenu";
+	public const string SERVER_SCENE = "Server";
+	public const string GAME_SCENE = "Game";
 }
