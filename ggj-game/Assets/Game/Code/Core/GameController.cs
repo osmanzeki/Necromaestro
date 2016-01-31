@@ -113,28 +113,36 @@ public class GameController : MonoBehaviour
         }
 
 		// Show totem colors
+		SpriteRenderer baseSpriteRenderer = totemBase.GetComponent<SpriteRenderer>();
+		Color baseColor = baseSpriteRenderer.material.color;
 		if (currentScore > 250) {
-			SpriteRenderer baseSpriteRenderer = totemBase.GetComponent<SpriteRenderer>();
-			Color baseColor = baseSpriteRenderer.material.color;
 			baseSpriteRenderer.color = new Color(baseColor.r, baseColor.g, baseColor.b, 1f);
+		} else {
+			baseSpriteRenderer.color = new Color(baseColor.r, baseColor.g, baseColor.b, 0f);
 		}
 
+		SpriteRenderer lowSpriteRenderer = totemLow.GetComponent<SpriteRenderer>();
+		Color lowColor = lowSpriteRenderer.material.color;
 		if (currentScore > 500) {
-			SpriteRenderer lowSpriteRenderer = totemLow.GetComponent<SpriteRenderer>();
-			Color lowColor = lowSpriteRenderer.material.color;
 			lowSpriteRenderer.color = new Color(lowColor.r, lowColor.g, lowColor.b, 1f);
+		} else {
+			lowSpriteRenderer.color = new Color(lowColor.r, lowColor.g, lowColor.b, 0f);
 		}
 
+		SpriteRenderer highSpriteRenderer = totemHigh.GetComponent<SpriteRenderer>();
+		Color highColor = highSpriteRenderer.material.color;
 		if (currentScore > 750) {
-			SpriteRenderer highSpriteRenderer = totemHigh.GetComponent<SpriteRenderer>();
-			Color highColor = highSpriteRenderer.material.color;
 			highSpriteRenderer.color = new Color(highColor.r, highColor.g, highColor.b, 1f);
+		} else {
+			highSpriteRenderer.color = new Color(highColor.r, highColor.g, highColor.b, 0f);
 		}
 
+		SpriteRenderer topSpriteRenderer = totemTop.GetComponent<SpriteRenderer>();
+		Color topColor = topSpriteRenderer.material.color;
 		if (currentScore > 900) {
-			SpriteRenderer topSpriteRenderer = totemTop.GetComponent<SpriteRenderer>();
-			Color topColor = topSpriteRenderer.material.color;
 			topSpriteRenderer.color = new Color(topColor.r, topColor.g, topColor.b, 1f);
+		} else {
+			topSpriteRenderer.color = new Color(topColor.r, topColor.g, topColor.b, 0f);
 		}
 
     }
