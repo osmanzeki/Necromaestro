@@ -23,14 +23,12 @@ public class SoundController : MonoBehaviour {
         FxWubBassSlow
     }
 
-    protected void Awake()
-    {
+    protected void Awake() {
         instance = this;
     }
 
 
     public void PlaySfx (SfxType Sfx) {
-
         sounds[(int)Sfx].Play();
     }
 }
