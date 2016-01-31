@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerComponent : MonoBehaviour
 {
-	private enum Behaviour
+	public enum Behaviour
 	{
 		SwipeLeft,
 		SwipeRight,
@@ -69,7 +69,7 @@ public class PlayerComponent : MonoBehaviour
 		SoundController.instance.PlaySfx (SoundController.SfxType.FxKickBassFast, msg.targetId);
 	}
 
-	private void ChangeBehaviour (Behaviour b)
+	public void ChangeBehaviour (Behaviour b)
 	{
         Debug.Log("ChangeBehaviour");
         Debug.Log("Changing Behaviour to id: " + (int)b);

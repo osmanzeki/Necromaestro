@@ -181,13 +181,20 @@ public class GameController : MonoBehaviour
 	{
 		Debug.Log ("* Game Start");
 		gameState = GameState.Started;
-	}
+    }
 
 	private void OnGameEnd (GameMessage msg)
 	{
 		Debug.Log ("* Game End");
 		gameState = GameState.End;
-	}
+
+        int i = 0;
+        foreach (PlayerComponent player in players)
+        {
+            player.ChangeBehaviour(PlayerComponent.Behaviour.HoldStart);
+            SoundController.instance.PlaySfx(SoundController.SfxType.FxMelodic1, i++);
+        }
+    }
 
     private void OnTotemScore(GameMessage msg)
     {
