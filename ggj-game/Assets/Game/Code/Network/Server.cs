@@ -29,9 +29,14 @@ public class Server : MonoBehaviour {
 
 	void OnDestroy () {
 		GameEvents.GameConnectedSignal.RemoveListener(StartGame);
-	}
+    }
 
-	void StartGame () {
+    void OnApplicationQuit() {
+        if (client != null)
+            client.Close();
+    }
+
+    void StartGame () {
 		Debug.Log("Game BEGINS");
 	}
 
@@ -48,7 +53,7 @@ public class Server : MonoBehaviour {
 
 			GameEvents.GameConnectedSignal.Dispatch();
         }
-        catch (Exception e) {
+        catch (Exception) {
 
             Debug.Log("Connection to server failed.");
             client.Close();
@@ -56,10 +61,24 @@ public class Server : MonoBehaviour {
 
         }
 
+        Debug.Log("Connected to server.");
+
         while (true) {
 
-            string Data = sr.ReadLine();
-            if (Data == "")
+            string Data = null;
+
+            try {
+
+                Data = sr.ReadLine();
+
+            }
+            catch(Exception) {
+
+                break;
+
+            }
+
+            if (Data == null || Data == "" || Data.Length == 0)
                 break;
 
             Debug.Log(Data);
@@ -70,9 +89,9 @@ public class Server : MonoBehaviour {
 				if (Msg != null) {
 					Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
 
-					// Input events
-					GameController.MessageReceivedSignal.Dispatch(Msg);
-				}
+                    // Input events
+                    GameController.MessageReceivedSignal.Dispatch(Msg);
+                }
 
             }
             catch (Exception e) {
