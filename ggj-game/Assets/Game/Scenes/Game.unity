@@ -4008,6 +4008,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1637382013}
   - 212: {fileID: 1637382014}
+  - 95: {fileID: 1637382015}
   m_Layer: 0
   m_Name: obj_flame_01
   m_TagString: Untagged
@@ -4057,6 +4058,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
+--- !u!95 &1637382015
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637382012}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37ebdff8495b842ca9b9e8a475fb2085, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1644624072
 Prefab:
   m_ObjectHideFlags: 0
@@ -4112,6 +4130,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1655337307}
   - 212: {fileID: 1655337308}
+  - 95: {fileID: 1655337309}
   m_Layer: 0
   m_Name: obj_flame_01
   m_TagString: Untagged
@@ -4161,6 +4180,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1655337309
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1655337306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37ebdff8495b842ca9b9e8a475fb2085, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1683063155
 GameObject:
   m_ObjectHideFlags: 0
@@ -4201,6 +4237,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1715853592}
   - 212: {fileID: 1715853593}
+  - 95: {fileID: 1715853594}
   m_Layer: 0
   m_Name: obj_flame_01
   m_TagString: Untagged
@@ -4250,6 +4287,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
+--- !u!95 &1715853594
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1715853591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37ebdff8495b842ca9b9e8a475fb2085, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1721774632
 GameObject:
   m_ObjectHideFlags: 0
@@ -4802,6 +4856,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1866228785}
   - 212: {fileID: 1866228786}
+  - 95: {fileID: 1866228787}
   m_Layer: 0
   m_Name: obj_flame_01
   m_TagString: Untagged
@@ -4851,6 +4906,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1866228787
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1866228784}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37ebdff8495b842ca9b9e8a475fb2085, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1930793003
 GameObject:
   m_ObjectHideFlags: 0
@@ -4946,6 +5018,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1952623398}
   - 212: {fileID: 1952623399}
+  - 95: {fileID: 1952623400}
   m_Layer: 0
   m_Name: obj_flame_01
   m_TagString: Untagged
@@ -4995,6 +5068,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!95 &1952623400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1952623397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37ebdff8495b842ca9b9e8a475fb2085, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1972420620
 Prefab:
   m_ObjectHideFlags: 0
@@ -5359,6 +5449,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2031981215}
   - 212: {fileID: 2031981216}
+  - 95: {fileID: 2031981217}
   m_Layer: 0
   m_Name: obj_flame_01
   m_TagString: Untagged
@@ -5408,6 +5499,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
+--- !u!95 &2031981217
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2031981214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37ebdff8495b842ca9b9e8a475fb2085, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2041310746
 GameObject:
   m_ObjectHideFlags: 0
