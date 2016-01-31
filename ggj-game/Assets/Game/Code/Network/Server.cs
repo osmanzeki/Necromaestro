@@ -87,10 +87,10 @@ public class Server : MonoBehaviour {
 
                 GameMessage Msg = GameMessage.CreateFromJSON(Data);
 				if (Msg != null) {
-					Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
+					//Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
 
                     // Input events
-                    GameController.MessageReceivedSignal.Dispatch(Msg);
+                    GameController.gameController.addMessage(Msg);
                 }
 
             }

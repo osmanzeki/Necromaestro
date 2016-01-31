@@ -3,12 +3,15 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class GameController : MonoBehaviour
 {
-	private static GameController gameController;
+	public static GameController gameController;
 	private int currentFakeTargetId = 0;
+    private List<GameMessage> messageList = new List<GameMessage>();
+    private Object listLock = new Object();
 
 	public static Signal<GameMessage> MessageReceivedSignal = new Signal<GameMessage> ();
 
@@ -95,9 +98,16 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Y))
 			FakeMsg ("inputEvent", "TAP", currentFakeTargetId);
 
-	}
+        lock (listLock)
+        {
+            foreach (GameMessage msg in messageList)
+                OnServerMessage(msg);
+            messageList.Clear();
+        }
 
-	private void FakeMsg (string type, string ev, int targetId)
+    }
+
+    private void FakeMsg (string type, string ev, int targetId)
 	{
 		GameMessage msg = new GameMessage ();
 		msg.e = ev;
@@ -105,6 +115,15 @@ public class GameController : MonoBehaviour
 		msg.targetId = targetId;
 		OnServerMessage (msg);
 	}
+
+    public void addMessage(GameMessage msg)
+    {
+        lock(listLock)
+        {
+            messageList.Add(msg);
+        }
+    }
+
 
 	private void OnServerMessage (GameMessage msg)
 	{
@@ -126,25 +145,25 @@ public class GameController : MonoBehaviour
 			OnGameLoaded (msg);
 		else if (msg.e == "GAME_END")
 			OnGameEnd (msg);
-	}
+        else if (msg.e == "TOTEM_SCORE")
+            OnTotemScore(msg);
+    }
 
-	private void OnInputEvent (GameMessage msg)
+    private void OnInputEvent (GameMessage msg)
 	{
 		if (gameState != GameState.Started)
 			return;
 
 		// SWIPE_LEFT, SWIPE_RIGHT, TILT, HOLD_START, HOLD_END, TAP
-		Debug.Log (msg.e);
+		//Debug.Log (msg.e);
 		if (msg.e == "SWIPE_LEFT")
 			OnPlayerSwipeLeft (msg);
 		else if (msg.e == "SWIPE_RIGHT")
 			OnPlayerSwipeRight (msg);
 		else if (msg.e == "TILT")
 			OnPlayerTilt (msg);
-		else if (msg.e == "HOLD_START")
+		else if (msg.e == "HOLD")
 			OnPlayerHoldStart (msg);
-		else if (msg.e == "HOLD_END")
-			OnPlayerHoldEnd (msg);
 		else if (msg.e == "TAP")
 			OnPlayerTap (msg);
 	}
@@ -155,7 +174,7 @@ public class GameController : MonoBehaviour
 	private void OnGameLoaded (GameMessage msg)
 	{
 		Debug.Log ("* Game Loaded");
-		gameState = GameState.Lobby;
+		gameState = GameState.Started;
 	}
 
 	private void OnGameStart (GameMessage msg)
@@ -170,7 +189,12 @@ public class GameController : MonoBehaviour
 		gameState = GameState.End;
 	}
 
-	private void OnPlayerSwipeLeft (GameMessage msg)
+    private void OnTotemScore(GameMessage msg)
+    {
+        Debug.Log(msg.details.score);
+    }
+
+    private void OnPlayerSwipeLeft (GameMessage msg)
 	{
 		players [msg.targetId].SwipeLeft (msg);
 	}
