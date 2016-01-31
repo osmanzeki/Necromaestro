@@ -15,6 +15,13 @@ public class GameController : MonoBehaviour
 
 	public static Signal<GameMessage> MessageReceivedSignal = new Signal<GameMessage> ();
 
+	public GameObject totemTop;
+	public GameObject totemHigh;
+	public GameObject totemLow;
+	public GameObject totemBase;
+
+	private int currentScore = 0;
+
 	private enum GameState
 	{
 		Lobby,
@@ -105,6 +112,31 @@ public class GameController : MonoBehaviour
             messageList.Clear();
         }
 
+		// Show totem colors
+		if (currentScore > 250) {
+			SpriteRenderer baseSpriteRenderer = totemBase.GetComponent<SpriteRenderer>();
+			Color baseColor = baseSpriteRenderer.material.color;
+			baseSpriteRenderer.color = new Color(baseColor.r, baseColor.g, baseColor.b, 1f);
+		}
+
+		if (currentScore > 500) {
+			SpriteRenderer lowSpriteRenderer = totemLow.GetComponent<SpriteRenderer>();
+			Color lowColor = lowSpriteRenderer.material.color;
+			lowSpriteRenderer.color = new Color(lowColor.r, lowColor.g, lowColor.b, 1f);
+		}
+
+		if (currentScore > 750) {
+			SpriteRenderer highSpriteRenderer = totemHigh.GetComponent<SpriteRenderer>();
+			Color highColor = highSpriteRenderer.material.color;
+			highSpriteRenderer.color = new Color(highColor.r, highColor.g, highColor.b, 1f);
+		}
+
+		if (currentScore > 900) {
+			SpriteRenderer topSpriteRenderer = totemTop.GetComponent<SpriteRenderer>();
+			Color topColor = topSpriteRenderer.material.color;
+			topSpriteRenderer.color = new Color(topColor.r, topColor.g, topColor.b, 1f);
+		}
+
     }
 
     private void FakeMsg (string type, string ev, int targetId)
@@ -191,6 +223,7 @@ public class GameController : MonoBehaviour
 
     private void OnTotemScore(GameMessage msg)
     {
+		currentScore = msg.details.score;
         Debug.Log(msg.details.score);
     }
 
