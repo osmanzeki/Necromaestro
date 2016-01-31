@@ -33,6 +33,7 @@ public class SoundController : MonoBehaviour {
 	}
 
 	private uint[] activeSounds = new uint[(int)SfxType.Count];
+	private int[] playerActiveSound = new int[4];
 
     protected void Awake() {
         instance = this;
@@ -77,13 +78,26 @@ public class SoundController : MonoBehaviour {
 		sounds[(int)SfxType.FxWubBassSlow].Play();
     }
 
-    public void PlaySfx (SfxType sfx) {
-		activeSounds[(int)sfx] += 1;
-		sounds[(int)sfx].volume = 1.0f;
-    }
+    public void PlaySfx(SfxType sfx, int playerId) {
 
-	public void StopSfx (SfxType sfx) {
-		activeSounds[(int)sfx] -= 1;
-		sounds[(int)sfx].volume = 0f;
-	}
+		activeSounds[(int)sfx] += 1;
+        sounds[(int)sfx].volume = 1.0f;
+
+        int currentPlayerSound = playerActiveSound[playerId];
+        playerActiveSound[playerId] = (int)sfx;
+
+        if (activeSounds[currentPlayerSound] > 0)
+        {
+            --activeSounds[currentPlayerSound];
+            if (activeSounds[currentPlayerSound] == 0)
+            {
+                Debug.Log("Stopping sound " + currentPlayerSound);
+                sounds[currentPlayerSound].volume = 0;
+            }
+            else
+            {
+                Debug.Log("_");
+            }
+        }
+    }
 }

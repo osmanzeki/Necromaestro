@@ -172,31 +172,31 @@ public class GameController : MonoBehaviour
 
 	private void OnPlayerSwipeLeft (GameMessage msg)
 	{
-		players [msg.targetId].SwipeLeft ();
+		players [msg.targetId].SwipeLeft (msg);
 	}
 
 	private void OnPlayerSwipeRight (GameMessage msg)
 	{
-		players [msg.targetId].SwipeRight ();
+		players [msg.targetId].SwipeRight (msg);
 	}
 
 	private void OnPlayerTilt (GameMessage msg)
 	{
-		players [msg.targetId].Tilt ();
+		players [msg.targetId].Tilt (msg);
 	}
 
 	private void OnPlayerHoldStart (GameMessage msg)
 	{
-		players [msg.targetId].HoldStart ();
+		players [msg.targetId].HoldStart (msg);
 	}
 
 	private void OnPlayerHoldEnd (GameMessage msg)
 	{
-		players [msg.targetId].HoldEnd ();
+		players [msg.targetId].HoldEnd (msg);
 	}
 
 	private void OnPlayerTap (GameMessage msg)
 	{
-		players [msg.targetId].Tap ();
+		players [msg.targetId].Tap (msg);
 	}
 }
