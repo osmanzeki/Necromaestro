@@ -48,6 +48,7 @@ public class PlayerComponent : MonoBehaviour {
     public void Tilt() {
 
         ChangeBehaviour(Behaviour.Tilt);
+		SoundController.instance.PlaySfx(SoundController.SfxType.FxKickBassFast);
 
     }
 

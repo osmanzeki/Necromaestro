@@ -309,7 +309,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1902262613
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c28fa6f74eb7fd04690141030366fe3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -354,7 +354,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4a90473ae9006794799a12b4e90ba0a8, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -515,7 +515,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6ea196d722176f740a12a75df2af5a54, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -618,7 +618,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 807dca18d4a0b6849b1eaf230f3fd9b9, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -721,7 +721,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: eab986d2f8dc49f49b871cf9447d197b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -870,7 +870,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3ca778cf2536aa648b2ce45f9bf08052, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1057,7 +1057,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1902262613
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c28fa6f74eb7fd04690141030366fe3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1277,7 +1277,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 574294624}
-  - 82: {fileID: 574294625}
   m_Layer: 0
   m_Name: SoundFx
   m_TagString: Untagged
@@ -1311,80 +1310,6 @@ Transform:
   - {fileID: 304640001}
   m_Father: {fileID: 1023398638}
   m_RootOrder: 1
---- !u!82 &574294625
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 574294623}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a9de19703e55eee4ebbd7ef2a02a8b17, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &724685325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,7 +1435,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 18358e1ff9bc69d4889b9a956a329e70, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1908,7 +1833,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 39029a73a3caa7c408ef892afe3a65a0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2025,7 +1950,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1902262613
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c28fa6f74eb7fd04690141030366fe3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2200,7 +2125,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1902262613
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c28fa6f74eb7fd04690141030366fe3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2303,7 +2228,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 55cfe18ad7e139a4597c5cf80f0ca1c1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2582,7 +2507,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 94c176d88f3481e4382ab8b0890a70fe, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2860,7 +2785,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1902262613
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c28fa6f74eb7fd04690141030366fe3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2949,8 +2874,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1902262613
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e4d6041267deb44595c82e1b7c70069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3007,8 +2932,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1902262613
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e4d6041267deb44595c82e1b7c70069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3124,8 +3049,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1902262613
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e4d6041267deb44595c82e1b7c70069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3169,7 +3094,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 1e9824b6b4298114f9bc662a429eb77a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3272,7 +3197,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c37dc8a13f078ac4baa672a336dedc2c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3389,7 +3314,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1902262613
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c28fa6f74eb7fd04690141030366fe3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3434,7 +3359,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 96890c647169bf94b9cc5135780c3c98, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3550,8 +3475,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1902262613
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e4d6041267deb44595c82e1b7c70069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3694,8 +3619,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1902262613
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e4d6041267deb44595c82e1b7c70069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3842,7 +3767,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4a5f9611e411e1347a4f906b78d09bdd, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3945,7 +3870,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a9de19703e55eee4ebbd7ef2a02a8b17, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4061,8 +3986,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1902262613
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8e4d6041267deb44595c82e1b7c70069, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
