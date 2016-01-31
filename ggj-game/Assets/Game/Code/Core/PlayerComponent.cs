@@ -40,6 +40,7 @@ public class PlayerComponent : MonoBehaviour {
     public void SwipeRight() {
 
         ChangeBehaviour(Behaviour.SwipeRight);
+        SoundController.instance.PlaySfx(SoundController.SfxType.FxCreeper2);
 
     }
 
@@ -68,6 +69,7 @@ public class PlayerComponent : MonoBehaviour {
     public void Tap() {
 
         ChangeBehaviour(Behaviour.Tap);
+        SoundController.instance.PlaySfx(SoundController.SfxType.FxTams1);
 
     }
 

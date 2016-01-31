@@ -8,6 +8,7 @@ using System.Collections;
 public class GameController : MonoBehaviour
 {
 	private static GameController gameController;
+    private int currentFakeTargetId = 0;
 
 	public static Signal<GameMessage> MessageReceivedSignal = new Signal<GameMessage>();
 
@@ -64,8 +65,53 @@ public class GameController : MonoBehaviour
 
 	protected void Update ()
 	{
-		
-	}
+        if (Input.GetKeyDown("space"))
+            FakeMsg("gameEvent", "GAME_STARTING", currentFakeTargetId);
+
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+            currentFakeTargetId = 0;
+
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+            currentFakeTargetId = 1;
+
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+            currentFakeTargetId = 2;
+
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+            currentFakeTargetId = 3;
+
+
+        if (Input.GetKeyDown("a"))
+            FakeMsg("inputEvent", "SWIPE_LEFT", currentFakeTargetId);
+
+        if (Input.GetKeyDown("z"))
+            FakeMsg("inputEvent", "SWIPE_RIGHT", currentFakeTargetId);
+
+        if (Input.GetKeyDown("e"))
+            FakeMsg("inputEvent", "TILT", currentFakeTargetId);
+
+        if (Input.GetKeyDown("r"))
+            FakeMsg("inputEvent", "HOLD_START", currentFakeTargetId);
+
+        if (Input.GetKeyDown("t"))
+            FakeMsg("inputEvent", "HOLD_END", currentFakeTargetId);
+
+        if (Input.GetKeyDown("y"))
+            FakeMsg("inputEvent", "TAP", currentFakeTargetId);
+
+    }
+
+
+    private void FakeMsg(string type, string ev, int targetId) {
+
+        GameMessage msg = new GameMessage();
+        msg.e = ev;
+        msg.type = type;
+        msg.targetId = targetId;
+        OnServerMessage(msg);
+
+    }
 
 
     private void OnServerMessage(GameMessage msg)
@@ -80,7 +126,7 @@ public class GameController : MonoBehaviour
     /*
      * Message types
      */
-    private void OnInputEvent(GameMessage msg)
+    private void OnGameEvent(GameMessage msg)
     {
         Debug.Log(msg.e);
         if (msg.e == "GAME_STARTING")
@@ -92,7 +138,7 @@ public class GameController : MonoBehaviour
     }
 
 
-    private void OnGameEvent(GameMessage msg)
+    private void OnInputEvent(GameMessage msg)
     {
         if (gameState != GameState.Started)
             return;
