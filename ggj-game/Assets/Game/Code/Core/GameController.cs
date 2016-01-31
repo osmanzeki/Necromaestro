@@ -65,7 +65,6 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown ("space"))
 			FakeMsg ("gameEvent", "GAME_STARTING", currentFakeTargetId);
 
-
 		if (Input.GetKeyDown (KeyCode.Keypad1))
 			currentFakeTargetId = 0;
 
@@ -78,30 +77,28 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Keypad4))
 			currentFakeTargetId = 3;
 
-
-		if (Input.GetKeyDown ("a"))
+		if (Input.GetKeyDown (KeyCode.Q))
 			FakeMsg ("inputEvent", "SWIPE_LEFT", currentFakeTargetId);
 
-		if (Input.GetKeyDown ("z"))
+		if (Input.GetKeyDown (KeyCode.W))
 			FakeMsg ("inputEvent", "SWIPE_RIGHT", currentFakeTargetId);
 
-		if (Input.GetKeyDown ("e"))
+		if (Input.GetKeyDown (KeyCode.E))
 			FakeMsg ("inputEvent", "TILT", currentFakeTargetId);
 
-		if (Input.GetKeyDown ("r"))
+		if (Input.GetKeyDown (KeyCode.R))
 			FakeMsg ("inputEvent", "HOLD_START", currentFakeTargetId);
 
-		if (Input.GetKeyDown ("t"))
+		if (Input.GetKeyDown (KeyCode.T))
 			FakeMsg ("inputEvent", "HOLD_END", currentFakeTargetId);
 
-		if (Input.GetKeyDown ("y"))
+		if (Input.GetKeyDown (KeyCode.Y))
 			FakeMsg ("inputEvent", "TAP", currentFakeTargetId);
 
 	}
 
 	private void FakeMsg (string type, string ev, int targetId)
 	{
-
 		GameMessage msg = new GameMessage ();
 		msg.e = ev;
 		msg.type = type;

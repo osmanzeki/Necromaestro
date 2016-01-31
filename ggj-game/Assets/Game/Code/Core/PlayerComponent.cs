@@ -1,82 +1,68 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerComponent : MonoBehaviour {
+public class PlayerComponent : MonoBehaviour
+{
+	private enum Behaviour
+	{
+		SwipeLeft,
+		SwipeRight,
+		Tilt,
+		HoldStart,
+		HoldEnd,
+		Tap
+	};
 
-    private enum Behaviour {
-        SwipeLeft,
-        SwipeRight,
-        Tilt,
-        HoldStart,
-        HoldEnd,
-        Tap
-    };
+	private Animator animator;
 
-    private Animator animator;
+	void Start ()
+	{
+		animator = this.GetComponent<Animator> ();
+	}
 
-
-    // Use this for initialization
-    void Start () {
-
-        animator = this.GetComponent<Animator>();
-
-    }
-
-
-    // Update is called once per frame
-    void Update () {
-	
+	public void SwipeLeft ()
+	{
+		ChangeBehaviour (Behaviour.SwipeLeft);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxCreeper1);
 	}
 
 
-    public void SwipeLeft() {
-
-        ChangeBehaviour(Behaviour.SwipeLeft);
-        SoundController.instance.PlaySfx(SoundController.SfxType.FxCreeper1);
-
-    }
-
-
-    public void SwipeRight() {
-
-        ChangeBehaviour(Behaviour.SwipeRight);
-        SoundController.instance.PlaySfx(SoundController.SfxType.FxCreeper2);
-
-    }
+	public void SwipeRight ()
+	{
+		ChangeBehaviour (Behaviour.SwipeRight);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxCreeper2);
+	}
 
 
-    public void Tilt() {
-
-        ChangeBehaviour(Behaviour.Tilt);
-		SoundController.instance.PlaySfx(SoundController.SfxType.FxKickBassFast);
-
-    }
-
-
-    public void HoldStart() {
-
-        ChangeBehaviour(Behaviour.HoldStart);
-
-    }
+	public void Tilt ()
+	{
+		ChangeBehaviour (Behaviour.Tilt);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxKickBassFast);
+	}
 
 
-    public void HoldEnd() {
+	public void HoldStart ()
+	{
+		ChangeBehaviour (Behaviour.HoldStart);
+	}
 
-        ChangeBehaviour(Behaviour.HoldEnd);
 
-    }
+	public void HoldEnd ()
+	{
+		// TODO(oz) Differenciate hold end from hold start
+		ChangeBehaviour (Behaviour.HoldStart);
+	}
 
 
-    public void Tap() {
+	public void Tap ()
+	{
+		ChangeBehaviour (Behaviour.Tap);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxTams1);
+	}
 
-        ChangeBehaviour(Behaviour.Tap);
-        SoundController.instance.PlaySfx(SoundController.SfxType.FxTams1);
-
-    }
-
-    private void ChangeBehaviour(Behaviour b) {
-
-        animator.SetInteger("Behaviour", (int)b);
-
-    }
+	private void ChangeBehaviour (Behaviour b)
+	{
+		Debug.Log("Changing Behaviour to id: " + (int)b);
+		animator.SetInteger ("Behaviour", (int)b);
+	}
 }
