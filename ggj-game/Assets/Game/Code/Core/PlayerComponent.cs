@@ -18,6 +18,7 @@ public class PlayerComponent : MonoBehaviour
 	void Start ()
 	{
 		animator = this.GetComponent<Animator> ();
+		ChangeBehaviour (Behaviour.HoldStart);
 	}
 
 	public void SwipeLeft ()

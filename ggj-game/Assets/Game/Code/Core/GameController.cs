@@ -65,16 +65,16 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown ("space"))
 			FakeMsg ("gameEvent", "GAME_STARTING", currentFakeTargetId);
 
-		if (Input.GetKeyDown (KeyCode.Keypad1))
+		if (Input.GetKeyDown (KeyCode.Alpha1))
 			currentFakeTargetId = 0;
 
-		if (Input.GetKeyDown (KeyCode.Keypad2))
+		if (Input.GetKeyDown (KeyCode.Alpha2))
 			currentFakeTargetId = 1;
 
-		if (Input.GetKeyDown (KeyCode.Keypad3))
+		if (Input.GetKeyDown (KeyCode.Alpha3))
 			currentFakeTargetId = 2;
 
-		if (Input.GetKeyDown (KeyCode.Keypad4))
+		if (Input.GetKeyDown (KeyCode.Alpha4))
 			currentFakeTargetId = 3;
 
 		if (Input.GetKeyDown (KeyCode.Q))
