@@ -24,27 +24,28 @@ public class PlayerComponent : MonoBehaviour
 	public void SwipeLeft ()
 	{
 		ChangeBehaviour (Behaviour.SwipeLeft);
-		SoundController.instance.PlaySfx (SoundController.SfxType.FxCreeper1);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxMelodic1);
 	}
 
 
 	public void SwipeRight ()
 	{
 		ChangeBehaviour (Behaviour.SwipeRight);
-		SoundController.instance.PlaySfx (SoundController.SfxType.FxCreeper2);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxMelodic2);
 	}
 
 
 	public void Tilt ()
 	{
 		ChangeBehaviour (Behaviour.Tilt);
-		SoundController.instance.PlaySfx (SoundController.SfxType.FxKickBassFast);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxDistortedHat);
 	}
 
 
 	public void HoldStart ()
 	{
 		ChangeBehaviour (Behaviour.HoldStart);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxTams2);
 	}
 
 
@@ -52,13 +53,14 @@ public class PlayerComponent : MonoBehaviour
 	{
 		// TODO(oz) Differenciate hold end from hold start
 		ChangeBehaviour (Behaviour.HoldStart);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxTams2);
 	}
 
 
 	public void Tap ()
 	{
 		ChangeBehaviour (Behaviour.Tap);
-		SoundController.instance.PlaySfx (SoundController.SfxType.FxTams1);
+		SoundController.instance.PlaySfx (SoundController.SfxType.FxKickBassFast);
 	}
 
 	private void ChangeBehaviour (Behaviour b)
