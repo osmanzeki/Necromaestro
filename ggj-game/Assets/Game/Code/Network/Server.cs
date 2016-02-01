@@ -5,121 +5,123 @@ using System.Threading;
 using UnityEngine;
 
 
-public class Server : MonoBehaviour {
+public class Server : MonoBehaviour
+{
+	private TcpClient client = null;
+	private StreamReader sr = null;
+	private StreamWriter sw = null;
 
-    private TcpClient client = null;
-    private StreamReader sr = null;
-    private StreamWriter sw = null;
-
-    private System.Object WriteLock = new System.Object();
-    private Thread Thread;
+	private System.Object WriteLock = new System.Object ();
+	private Thread Thread;
 
 
-	void Awake () {
-		GameEvents.GameConnectedSignal.AddListener(StartGame);
+	void Awake ()
+	{
+		GameEvents.GameConnectedSignal.AddListener (StartGame);
 	}
 
-    void Start() {
-		UnityEngine.Object.DontDestroyOnLoad(gameObject);
+	void Start ()
+	{
+		UnityEngine.Object.DontDestroyOnLoad (gameObject);
 
-        ThreadStart ts = new ThreadStart(Listen);
-        Thread = new Thread(ts);
-        Thread.Start();
-    }
-
-	void OnDestroy () {
-		GameEvents.GameConnectedSignal.RemoveListener(StartGame);
-    }
-
-    void OnApplicationQuit() {
-        if (client != null)
-            client.Close();
-    }
-
-    void StartGame () {
-		Debug.Log("Game BEGINS");
+		ThreadStart ts = new ThreadStart (Listen);
+		Thread = new Thread (ts);
+		Thread.Start ();
 	}
 
-    void Listen() {
+	void OnDestroy ()
+	{
+		GameEvents.GameConnectedSignal.RemoveListener (StartGame);
+	}
 
-        try {
+	void OnApplicationQuit ()
+	{
+		if (client != null)
+			client.Close ();
+	}
 
-            client = new TcpClient("52.90.77.154", 11000);
+	void StartGame ()
+	{
+		Debug.Log ("Game BEGINS");
+	}
 
-            Stream s = client.GetStream();
-            sr = new StreamReader(s);
-            sw = new StreamWriter(s);
-            sw.AutoFlush = true;
+	void Listen ()
+	{
 
-			GameEvents.GameConnectedSignal.Dispatch();
-        }
-        catch (Exception) {
+		try {
 
-            Debug.Log("Connection to server failed.");
-            client.Close();
-            return;
+			client = new TcpClient ("52.90.77.154", 11000);
 
-        }
+			Stream s = client.GetStream ();
+			sr = new StreamReader (s);
+			sw = new StreamWriter (s);
+			sw.AutoFlush = true;
 
-        Debug.Log("Connected to server.");
+			GameEvents.GameConnectedSignal.Dispatch ();
+		} catch (Exception) {
 
-        while (true) {
+			Debug.Log ("Connection to server failed.");
+			client.Close ();
+			return;
 
-            string Data = null;
+		}
 
-            try {
+		Debug.Log ("Connected to server.");
 
-                Data = sr.ReadLine();
+		while (true) {
 
-            }
-            catch(Exception) {
+			string Data = null;
 
-                break;
+			try {
 
-            }
+				Data = sr.ReadLine ();
 
-            if (Data == null || Data == "" || Data.Length == 0)
-                break;
+			} catch (Exception) {
 
-            Debug.Log(Data);
+				break;
 
-            try {
+			}
 
-                GameMessage Msg = GameMessage.CreateFromJSON(Data);
+			if (Data == null || Data == "" || Data.Length == 0)
+				break;
+
+			Debug.Log (Data);
+
+			try {
+
+				GameMessage Msg = GameMessage.CreateFromJSON (Data);
 				if (Msg != null) {
 					//Debug.Log("Type: " + Msg.type + "; Event: " + Msg.e);
 
-                    // Input events
-                    GameController.gameController.addMessage(Msg);
-                }
+					// Input events
+					GameController.gameController.addMessage (Msg);
+				}
 
-            }
-            catch (Exception e) {
+			} catch (Exception e) {
 
-                Debug.Log(e);
+				Debug.Log (e);
 
-            }
+			}
 
-        }
+		}
 
-        client.Close();
+		client.Close ();
 
-    }
+	}
 
 
-    public void Send(GameMessage Msg) {
+	public void Send (GameMessage Msg)
+	{
 
-        // Convert the string data to Json
-        string Data = Msg.ToJson();
+		// Convert the string data to Json
+		string Data = Msg.ToJson ();
 
-        // Send the data to the remote server
-        lock (WriteLock) {
+		// Send the data to the remote server
+		lock (WriteLock) {
 
-            sw.Write(Data);
+			sw.Write (Data);
 
-        }
+		}
 
-    }
-
+	}
 }
-
